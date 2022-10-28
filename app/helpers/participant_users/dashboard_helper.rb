@@ -1,0 +1,2 @@
+module ParticipantUsers::DashboardHelper
+end

@@ -1,0 +1,29 @@
+<h1 class="display-1 text-center">Save The Whales</h1>
+<h2 class="text-center">
+  <small class="text-muted">Total Pledged:</small>
+  $<%= @total_pledged %>
+</h2>
+<h2>Top pledges</h2>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Pledger</th>
+    <th scope="col">Amount</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <% @pledges.first(5).each do |pledger_user_id, amount, index| %>
+
+    <tr>
+      <th scope="row"><%= index %></th>
+      <td><%= pledger_user_id %></td>
+      <td><%= amount %></td>
+    </tr>
+
+  <% end %>
+  </tbody>
+</table>
+
+

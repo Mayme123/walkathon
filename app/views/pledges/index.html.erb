@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pledges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pledger user</th>
+      <th>Participant user</th>
+      <th>Amount</th>
+      <th>Message</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pledges.each do |pledge| %>
+      <tr>
+        <td><%= @participants.find(pledge.participant_user_id).displayname%></td>
+        <td><%= @pledgers.find(pledge.pledger_user_id).displayname%></td>
+        <td><%= pledge.amount %></td>
+        <td><%= pledge.message %></td>
+        <td><%= link_to 'Show', pledge %></td>
+        <td><%= link_to 'Edit', edit_pledge_path(pledge) %></td>
+        <td><%= link_to 'Destroy', pledge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pledge', new_pledge_path %>

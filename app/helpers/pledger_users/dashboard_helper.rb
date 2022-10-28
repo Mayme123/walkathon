@@ -1,0 +1,2 @@
+module PledgerUsers::DashboardHelper
+end

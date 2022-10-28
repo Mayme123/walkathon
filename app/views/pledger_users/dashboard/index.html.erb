@@ -1,0 +1,24 @@
+<h1>PledgerUsers::Dashboard#index</h1>
+<p>Find me in app/views/pledger_users/dashboard/index.html.erb</p>
+<!-- edited by 7/24/2021 by pranjal suri
+    welcome/display user, allow pledger to make pledge -->
+
+<p id="notice"><%= notice %></p>
+<div class="container" >
+  <div class="row">
+    <div class="col-xs-6">
+      <p>
+        Welcome, <kbd> <%= @pledger.email %> </kbd>
+      </p>
+    </div>
+    <div class="col-xs-6">
+      <h1>Make your pledge today!</h1>
+      <%= link_to 'New Pledge', new_pledge_path %>
+      <h2>Your current pledges: </h2>
+      <%= @all_pledges.each %>
+
+
+  </div>
+
+  </div>
+</div>

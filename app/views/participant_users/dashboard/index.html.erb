@@ -1,0 +1,77 @@
+<!-- Created by Andrew Shen 7/25/21 -->
+<!-- Edited by Andrew Shen 7/26/21 -->
+<br/>
+<h4><%= "Welcome " + current_participant_user.displayname + "!" %></h4>
+
+<div class="card" id="total-pledged" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Total Pledged</h5>
+    <p class="card-text"><%= "$" + @total_pledged.to_s %></p>
+  </div>
+</div>
+
+<br/><br/>
+
+
+<div class="card" id="pledge-list" style="width: 40rem;">
+  <div class="card-body">
+    <h5 class="card-title">List of Pledges</h5>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Pledger email</th>
+        <th>Pledger name</th>
+        <th>Participant user id</th>
+        <th>Amount</th>
+        <th>Message</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @pledgers.each do |pledger| %>
+        <tr>
+          <td><%= pledger.email %></td>
+          <td><%= pledger.displayname %></td>
+          <td><%= pledger.participant_user_id %></td>
+          <td><%= pledger.amount %></td>
+          <td><%= pledger.message %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<br/>
+
+<div class="card" id="message-card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Send a message to your pledgers!</h5>
+    <%= form_with(model: @message) do |form| %>
+      <% if @message.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+          <ul>
+            <% @message.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.text_field :participant_user_id, style: 'display:none' %>
+      </div>
+
+      <div class="field">
+        <%= form.label :content %>
+        <%= form.text_field :content , placeholder:"Message"%>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

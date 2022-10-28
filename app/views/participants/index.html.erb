@@ -1,0 +1,13 @@
+<!--Created by Matt Ayme 7/23/21: displays total pledge amounts for each participant -->
+<h1 class="text-center my-3">Walkathon Participants</h1>
+<div class="container">
+  <!-- loop through each participant and reduce their pledges amounts to their sum -->
+  <% @participant_pledge_totals.each do |participant_id, amounts| %>
+    <div class="row my-2">
+      <h2 class="border-bottom border-secondary border-2 w-50">Pledges For <%= ParticipantUser.find(participant_id).displayname %>!</h2>
+      <h3>
+        $<%= amounts.reduce { |total, amount| total += amount }  %>
+      </h3>
+    </div>
+  <% end %>
+</div>
